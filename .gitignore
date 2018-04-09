@@ -109,3 +109,4 @@ win32/*/debug
 win32/*/release
 win32/bin
 win32/lib
+Build/

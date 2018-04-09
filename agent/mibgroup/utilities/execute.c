@@ -91,7 +91,7 @@ run_shell_command( char *command, char *input,
             }
             snprintf( shellline, sizeof(shellline), "(%s) < \"%s\" > \"%s\"",
                       command, ifname, ofname );
-            result = system(shellline);
+            // result = system(shellline);
             /*
              * If output was requested, then retrieve & return it.
              * Tidy up, and return the result of the command.
@@ -129,8 +129,8 @@ run_shell_command( char *command, char *input,
                     output[0] = 0;
                 result = pclose(file);
             }
-        } else
-            result = system(command);
+        } //else
+          //  result = system(command);
     }
 
     return result;
