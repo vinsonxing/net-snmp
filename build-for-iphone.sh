@@ -3,7 +3,7 @@ PREFIX="$(pwd)/Build";
 MAKE_LOGS="${PREFIX}/log";
 CROSS_DEVELOPER="$(xcode-select -print-path)";
 ARCHS="x86_64 arm64"
-
+BUILD_TYPE=$1
 PS3="please select iOS version > "
 select item in $(xcodebuild -showsdks | grep iphoneos | awk '{print $NF}' | sed -e "s@iphoneos@@g")
 do
@@ -57,6 +57,9 @@ for arch in ${ARCHS}; do
     target=${host};
 
     CFLAGS="-arch ${arch}";
+    if [[ "x${BUILD_TYPE}" == "xdebug" && "${arch}" == "x86_64" ]]; then
+      CFLAGS="${CFLAGS} -g";
+    fi
     CFLAGS="${CFLAGS} -pipe";
     CFLAGS="${CFLAGS} -no-cpp-precomp";
     CFLAGS="${CFLAGS} -mios-version-min=${MIN_SUPPORT_VERSION}";

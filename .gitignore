@@ -110,3 +110,4 @@ win32/*/release
 win32/bin
 win32/lib
 Build/
+**/.DS_Store
